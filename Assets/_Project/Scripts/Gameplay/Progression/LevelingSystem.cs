@@ -1,8 +1,8 @@
 using UnityEngine;
-using _Project.Scripts.UI;
-// using _Project.Scripts.Core; // если захочешь внедрять через ServiceLocator
+using _Project.UI;
+// using _Project.Core; // если захочешь внедрять через ServiceLocator
 
-namespace _Project.Scripts.Gameplay.Leveling
+namespace _Project.Gameplay.Progression
 {
     public class LevelingSystem : MonoBehaviour, ILevel
     {

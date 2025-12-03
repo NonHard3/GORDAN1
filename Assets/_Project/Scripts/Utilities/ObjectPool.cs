@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Project.Scripts.Utilities
+namespace _Project.Utilities
 {
     /// <summary>
     /// Универсальный пул объектов для любых MonoBehaviour-префабов.

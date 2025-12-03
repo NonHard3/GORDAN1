@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Systems.Audio
+namespace _Project.Systems.Audio
 {
     public class AudioSystem
     {

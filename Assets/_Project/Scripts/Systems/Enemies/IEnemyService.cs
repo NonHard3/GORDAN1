@@ -1,15 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemyService
+namespace _Project.Systems.Enemies
 {
-    void RegisterEnemy(IEnemy enemy);
-    void UnregisterEnemy(IEnemy enemy);
+    public interface IEnemyService
+    {
+        void RegisterEnemy(IEnemy enemy);
+        void UnregisterEnemy(IEnemy enemy);
 
-    IEnemy GetEnemy(
-        Vector3 fromPosition,
-        float radius,
-        Project.Systems.Enemies.EnemySearchMode mode = Project.Systems.Enemies.EnemySearchMode.Closest);
+        IEnemy GetEnemy(
+            Vector3 fromPosition,
+            float radius,
+            _Project.Systems.Enemies.EnemySearchMode mode = _Project.Systems.Enemies.EnemySearchMode.Closest);
 
-    List<IEnemy> GetEnemiesInRange(Vector3 fromPosition, float radius);
+        List<IEnemy> GetEnemiesInRange(Vector3 fromPosition, float radius);
+    }
 }

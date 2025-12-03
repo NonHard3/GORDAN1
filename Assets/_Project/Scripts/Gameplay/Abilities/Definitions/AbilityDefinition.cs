@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Gameplay.Abilities
+namespace _Project.Gameplay.Abilities
 {
     public abstract class AbilityDefinition : ScriptableObject
     {

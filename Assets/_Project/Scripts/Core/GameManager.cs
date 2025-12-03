@@ -1,9 +1,9 @@
 using UnityEngine;
-using Project.Systems.Audio;
-using Project.Systems.SaveLoad;
+using _Project.Systems.Audio;
+using _Project.Systems.SaveLoad;
 
 
-namespace Project.Core
+namespace _Project.Core
 {
     public class GameManager : MonoBehaviour
     {

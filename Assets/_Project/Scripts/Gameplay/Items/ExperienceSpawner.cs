@@ -1,7 +1,7 @@
 using UnityEngine;
-using _Project.Scripts.Utilities;
-using _Project.Scripts.Gameplay.Drops;
-using _Project.Scripts.Gameplay.Leveling;
+using _Project.Utilities;
+using _Project.Gameplay.Drops;
+using _Project.Gameplay.Progression;
 
 public class ExperienceSpawner : MonoBehaviour
 {

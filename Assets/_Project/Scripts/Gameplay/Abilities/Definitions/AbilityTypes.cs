@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Project.Gameplay.Abilities
+namespace _Project.Gameplay.Abilities
 {
     public enum AbilityKind
     {

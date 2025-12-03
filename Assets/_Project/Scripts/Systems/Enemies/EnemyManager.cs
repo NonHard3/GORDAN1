@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Project.Core;              // ServiceLocator
+using _Project.Core;              // ServiceLocator
 
-namespace Project.Systems.Enemies
+namespace _Project.Systems.Enemies
 {
     public class EnemyManager : MonoBehaviour, IEnemyService
     {

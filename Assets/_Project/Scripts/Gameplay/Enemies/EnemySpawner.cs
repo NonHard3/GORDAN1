@@ -1,7 +1,7 @@
 using UnityEngine;
-using _Project.Scripts.Utilities;
+using _Project.Utilities;
 
-namespace _Project.Scripts.Gameplay.Enemies
+namespace _Project.Gameplay.Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {

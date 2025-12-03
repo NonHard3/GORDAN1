@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using Project.Core;                 // ServiceLocator
-using _Project.Scripts.Utilities;   // ObjectPool
-using Project.Systems.Enemies;      // IEnemyService
+using _Project.Core;                 // ServiceLocator
+using _Project.Utilities;   // ObjectPool
+using _Project.Systems.Enemies;      // IEnemyService
 
-namespace _Project.Scripts.Gameplay.Enemies
+namespace _Project.Gameplay.Enemies
 {
     [RequireComponent(typeof(Collider))]
     public class Enemy : MonoBehaviour, IEnemy

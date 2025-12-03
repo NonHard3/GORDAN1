@@ -1,4 +1,4 @@
-namespace _Project.Scripts.Gameplay.Leveling
+namespace _Project.Gameplay.Progression
 {
     public interface ILevel
     {

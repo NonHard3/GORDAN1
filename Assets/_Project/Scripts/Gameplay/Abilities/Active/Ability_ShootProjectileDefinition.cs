@@ -1,7 +1,7 @@
 using UnityEngine;
-using Project.Core;                 // ServiceLocator
-using Project.Systems.Enemies;      // EnemySearchMode
-using Project.Gameplay.Abilities;   // ActiveAbilityDefinition, AbilityRuntimeData, AbilityLevelData
+using _Project.Core;                 // ServiceLocator
+using _Project.Systems.Enemies;      // EnemySearchMode
+using _Project.Gameplay.Abilities;   // ActiveAbilityDefinition, AbilityRuntimeData, AbilityLevelData
 
 // IEnemy у тебя в глобальном namespace, так что using не нужен
 

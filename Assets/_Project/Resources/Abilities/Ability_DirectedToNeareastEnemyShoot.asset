@@ -22,13 +22,15 @@ MonoBehaviour:
   - cooldown: 1.5
     damage: 10
     radius: 0
-  - cooldown: 1
+  - cooldown: 1.25
     damage: 15
     radius: 0
-  - cooldown: 0.75
+  - cooldown: 1
     damage: 20
     radius: 0
   autoCast: 1
-  projectileSpeed: 20
+  searchRadius: 10
+  searchMode: 0
+  projectileSpeed: 10
   projectileLifeTime: 3
   spawnOffset: {x: 0, y: 0, z: 0}

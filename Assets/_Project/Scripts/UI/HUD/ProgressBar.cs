@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.Scripts.UI
+namespace _Project.UI
 {
     [RequireComponent(typeof(Slider))]
     public class ProgressBar : MonoBehaviour

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Gameplay.Abilities
+namespace _Project.Gameplay.Abilities
 {
     public abstract class ActiveAbilityDefinition : AbilityDefinition
     {

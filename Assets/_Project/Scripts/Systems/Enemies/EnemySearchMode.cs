@@ -1,4 +1,4 @@
-namespace Project.Systems.Enemies
+namespace _Project.Systems.Enemies
 {
     public enum EnemySearchMode
     {

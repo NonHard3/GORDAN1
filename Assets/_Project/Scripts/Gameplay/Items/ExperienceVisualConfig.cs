@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _Project.Scripts.Gameplay.Drops
+namespace _Project.Gameplay.Drops
 {
     [CreateAssetMenu(fileName = "ExperienceVisualConfig", menuName = "Scriptable Objects/Gameplay/Items/Experience Visual Config")]
     public class ExperienceVisualConfig : ScriptableObject
