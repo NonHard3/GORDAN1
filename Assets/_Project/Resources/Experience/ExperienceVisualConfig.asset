@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c125484a2b39baf4c9c5728654dc38aa, type: 3}
+  m_Name: ExperienceVisualConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Drops.ExperienceVisualConfig
+  _tiers:
+  - id: small
+    minAmount: 0
+    material: {fileID: 2100000, guid: 0535aa68f9a20e041aea350d7ce3ea8b, type: 2}
+  - id: medium
+    minAmount: 2
+    material: {fileID: 2100000, guid: 6bea5589d95f1c74eadcc656ec37ce68, type: 2}
+  - id: large
+    minAmount: 3
+    material: {fileID: 2100000, guid: a63dafa5986eeb0428409865cae6b999, type: 2}
+  - id: huge
+    minAmount: 100
+    material: {fileID: 2100000, guid: 15ccdbb1a1520684ca6afbb92bc6ddb0, type: 2}
+  - id: extra
+    minAmount: 200
+    material: {fileID: 2100000, guid: dbbbc5344b5ea6e40abc0d75a84f75fc, type: 2}

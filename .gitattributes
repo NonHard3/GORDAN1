@@ -1,0 +1,27 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Код и конфиги как текст
+*.cs       text diff=csharp
+*.meta     text
+*.shader   text
+*.cginc    text
+*.compute  text
+*.json     text
+*.xml      text
+*.yaml     text
+*.asset    text
+*.asmdef   text
+
+# Изображения — бинарные
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.tga   binary
+*.psd   binary
+*.exr   binary
+
+# Модели — бинарные
+*.fbx   binary
+*.obj   binary
+*.blend binary
