@@ -12,7 +12,6 @@ namespace _Project.Utilities
         private readonly T _prefab;
         private readonly Transform _parent;
         private readonly int _maxSize;
-
         private int _activeCount;
 
         public ObjectPool(T prefab, int initialSize, Transform parent = null, int maxSize = 50)
@@ -20,8 +19,6 @@ namespace _Project.Utilities
             _prefab = prefab;
             _parent = parent;
             _maxSize = maxSize;
-
-            Debug.Log(_maxSize);
 
             for (int i = 0; i < initialSize; i++)
             {
@@ -48,8 +45,7 @@ namespace _Project.Utilities
                 return obj;
             }
 
-            // Если достигнут предел — возвращаем null
-            Debug.LogWarning($"[ObjectPool] Достигнут лимит: {_maxSize} активных объектов.");
+            Debug.LogWarning($"[ObjectPool<{typeof(T).Name}>] Достигнут лимит: {_maxSize} активных объектов.");
             return null;
         }
 
@@ -57,7 +53,7 @@ namespace _Project.Utilities
         {
             if (_pool.Contains(obj))
             {
-                Debug.LogWarning($"[ObjectPool] Попытка вернуть объект {obj.name}, который уже в пуле!");
+                Debug.LogWarning($"[ObjectPool<{typeof(T).Name}>] Попытка вернуть объект {obj.name}, который уже в пуле!");
                 return;
             }
 

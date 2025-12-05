@@ -92,6 +92,7 @@ namespace _Project.Gameplay.Enemies
         public void TakeDamage(int amount)
         {
             _currentHealth -= amount;
+            Debug.LogWarning($"Получено урона: {amount}");
 
             if (_currentHealth <= 0)
                 Die();

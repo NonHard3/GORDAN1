@@ -1,33 +1,25 @@
 using UnityEngine;
+using _Project.Gameplay.Attacks;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class Projectile : MonoBehaviour
+public class Projectile : AttackInstanceBase
 {
     [Header("Defaults (если не переопределили через Initialize)")]
-    [SerializeField] private int defaultDamage = 5;
     [SerializeField] private float defaultSpeed = 15f;
-    [SerializeField] private float defaultLifeTime = 5f;
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem sparks;
 
     private Rigidbody _rb;
-    private float _spawnTime;
-    private bool _isReturned;
-
-    // Текущие параметры выстрела
-    private int _damage;
-    private float _lifeTime;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        _spawnTime = Time.time;
-        _isReturned = false;
+        base.OnEnable();
 
         if (_rb != null)
         {
@@ -36,27 +28,21 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (_isReturned) return;
-
-        if (Time.time - _spawnTime > _lifeTime)
-            ReturnToPool();
-    }
-
     /// <summary>
     /// Универсальная инициализация: направление, урон, скорость, жизнь.
+    /// Сигнатура оставлена такой же, как в твоём оригинале,
+    /// чтобы ничего не сломать в существующем коде (Ability_ShootProjectileDefinition).
     /// </summary>
     public void Initialize(Vector3 direction, int damage, float speed, float lifeTime)
     {
-        _damage = damage > 0 ? damage : defaultDamage;
+        // Настраиваем урон и время жизни через базовый класс
+        InitializeCommon(damage, lifeTime);
+
         float spd = speed > 0 ? speed : defaultSpeed;
-        _lifeTime = lifeTime > 0 ? lifeTime : defaultLifeTime;
 
-        _spawnTime = Time.time;
-        _isReturned = false;
-
-        direction = direction.sqrMagnitude > 0.0001f ? direction.normalized : transform.forward;
+        direction = direction.sqrMagnitude > 0.0001f
+            ? direction.normalized
+            : transform.forward;
 
         if (_rb != null)
         {
@@ -74,30 +60,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// Что делать при завершении жизни (по таймеру или после попадания).
+    /// Для снаряда — вернуть в пул.
+    /// </summary>
+    protected override void OnRelease()
     {
-        if (_isReturned) return;
-
-        // Ищем врага через интерфейс IEnemy
-        IEnemy enemy = other.GetComponent<IEnemy>() ?? other.GetComponentInParent<IEnemy>();
-
-        if (enemy != null && enemy.IsAlive)
-        {
-            enemy.TakeDamage(_damage);
-            ReturnToPool();
-            return;
-        }
-
-        // Пример: столкновение с полом — просто вернуть в пул
-        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
-            ReturnToPool();
-    }
-
-    private void ReturnToPool()
-    {
-        if (_isReturned) return;
-        _isReturned = true;
-
         if (_rb != null)
         {
             _rb.linearVelocity = Vector3.zero;
@@ -105,5 +73,17 @@ public class Projectile : MonoBehaviour
         }
 
         ProjectilePool.Instance.Return(this);
+    }
+
+    /// <summary>
+    /// Поведение при столкновении не с врагом.
+    /// Повторяет твою оригинальную логику: столкновение с полом — в пул.
+    /// </summary>
+    protected override void OnHitNonEnemy(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            Release();
+        }
     }
 }

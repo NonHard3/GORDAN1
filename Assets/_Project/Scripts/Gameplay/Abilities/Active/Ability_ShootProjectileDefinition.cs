@@ -1,8 +1,7 @@
 using UnityEngine;
-using _Project.Core;                 // ServiceLocator
-using _Project.Systems.Enemies;      // EnemySearchMode
-using _Project.Gameplay.Abilities;   // ActiveAbilityDefinition, AbilityRuntimeData, AbilityLevelData
-
+using _Project.Core;              // ServiceLocator
+using _Project.Systems.Enemies;   // EnemySearchMode
+using _Project.Gameplay.Abilities; // ActiveAbilityDefinition, AbilityRuntimeData, AbilityLevelData
 // IEnemy у тебя в глобальном namespace, так что using не нужен
 
 [CreateAssetMenu(
@@ -19,7 +18,7 @@ public class Ability_ShootProjectileDefinition : ActiveAbilityDefinition
     [SerializeField] private float projectileLifeTime = 3f;
 
     [Header("Spawn Settings")]
-    [Tooltip("Если null — спавним из позиции caster-а")]
+    [Tooltip("Смещение от позиции кастера (локальное).")]
     [SerializeField] private Vector3 spawnOffset = Vector3.zero;
 
     public override void Activate(AbilityRuntimeData runtime, Transform caster)
@@ -32,7 +31,6 @@ public class Ability_ShootProjectileDefinition : ActiveAbilityDefinition
 
         // Пытаемся получить сервис врагов через ServiceLocator
         IEnemy target = null;
-
         try
         {
             var enemyService = ServiceLocator.Get<IEnemyService>();
@@ -41,12 +39,13 @@ public class Ability_ShootProjectileDefinition : ActiveAbilityDefinition
         catch
         {
             // Если сервиса нет (EnemyManager не на сцене) — просто стреляем вперёд
-            Debug.LogWarning("Ability_ShootProjectileDefinition: IEnemyService не найден. Убедись, что EnemyManager есть на сцене.");
+            Debug.LogWarning(
+                "Ability_ShootProjectileDefinition: IEnemyService не найден. " +
+                "Убедись, что EnemyManager есть на сцене.");
         }
 
         // Определяем направление
         Vector3 direction;
-
         if (target != null && target.IsAlive)
         {
             direction = (target.Position - spawnPos).normalized;
@@ -73,7 +72,6 @@ public class Ability_ShootProjectileDefinition : ActiveAbilityDefinition
 
         // Параметры с текущего уровня способности
         AbilityLevelData level = runtime.CurrentLevelData;
-
         int damage = Mathf.RoundToInt(level.damage);
         float speed = projectileSpeed;
         float lifeTime = projectileLifeTime;
